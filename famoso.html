@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<title>jogos famosos</title>
+<html lang="pt-BR">
+    <style>
+        body{
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .painel{
+            background-color: black;
+            color: aqua;
+            padding: 60px;
+            width: 500px;
+            border-radius: 30px;
+            text-shadow: 0 0 15px aqua;
+            box-shadow: 10px 20px 30px aqua;
+            animation: surgir 1s ease-out forwards, pulsarBrilho 4s infinite ease-in-out;
+        }
+
+        .home{
+            background-color: aqua;
+            color: black;
+            padding: 12px;
+            width: 20px;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 0 15px aqua;
+            
+        }
+
+        .dow{
+            background-color: aqua;
+            color: black;
+            padding: 12px;
+            width: 20px;
+            border-radius: 30px ;
+            text-decoration: none;
+            box-shadow: 0 0 15px aqua;
+
+
+            
+        }
+
+        .logo{
+            background-color: black;
+            color: aqua;
+            padding: 30px;
+            width: 300px;
+            border-radius: 30px;
+            box-shadow: 10px 20px 30px;
+            text-shadow: 0 0 15px aqua;
+            margin-left: 100px;
+            animation: surgir 1s ease-out forwards, pulsarBrilho 4s infinite ease-in-out;
+        }
+
+       .beam{
+        background-color: aqua;
+        color: black;
+        padding: 12px;
+        width: 20px;
+        border-radius: 30px;
+        text-decoration: none;
+        box-shadow: 0 0 15px aqua;
+
+       }
+
+       .mine{
+        background-color: aqua;
+        color: black;
+        padding: 12px;
+        width: 20px;
+        text-decoration: none;
+        border-radius: 30px;
+        box-shadow: 0 0 15px aqua;
+       }
+
+        @keyframes surgir {
+    from {
+        opacity: 0;
+        transform: translateY(50px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);    
+    }
+}
+
+
+@keyframes pulsarBrilho {
+    0% {
+        box-shadow: 10px 20px 20px aquamarine;
+    }
+    50% {
+        box-shadow: 10px 20px 40px aqua; /* Brilha mais */
+    }
+    100% {
+        box-shadow: 10px 20px 20px aquamarine;
+    }
+}
+    </style>
+    <body>
+       <div class="painel">
+        <a href="index.html"class="home">home</a>
+        <h1>jogos famosos</h1>
+        <h1>listas de jogos</h1>
+        <h1>space engine</h1>
+        <a href="https://chat.whatsapp.com/EQ3znQsSmAnFSTBcP8cpkC"class="dow">entre no grupo do whatsapp para abaixar</a>
+        <h1>beam g drive tech demo 0.3</h1>
+        <a href="https://www.mediafire.com/file/cj7wbxk0jx3c4d5/BeamNG-Techdemo-0.3-setup+(3).zip/file"class="beam">abaixar</a>
+        <h1>minecraft</h1>
+        <a href="https://www.mediafire.com/file/xfvqsk8rx1og8ae/mine+(4).zip/file"class="mine">abaixar</a>
+       </div>
+    </body>
+</html>
+<div class="logo">
+    <h1>rafagames</h1>
+</div>

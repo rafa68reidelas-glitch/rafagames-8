@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<title>jogos em python</title>
+<style>
+    body{
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .painel{
+        background-color: black;
+        color: aqua;
+        padding: 60px;
+        width: 600px;
+        border-radius: 30px;
+        box-shadow: 10px 20px 30px aqua;
+        text-shadow: 0 0 15px aqua;
+        animation: surgir 1s ease-out forwards, pulsarBrilho 4s infinite ease-in-out;
+    }
+
+    .obby{
+        background-color: aqua;
+        color: black;
+        padding: 12px;
+        width: 20px;
+        border-radius: 30px;
+        box-shadow: 0 0 15px aqua;
+        text-decoration: none;
+    }
+    .logo{
+        background-color: black;
+        color: aqua;
+        padding: 30px;
+        width: 300px;
+        border-radius: 30px;
+        box-shadow: 10px 20px 30px aqua;
+        text-shadow: 0 0 15px aqua;
+        margin-left: 320px;
+        animation: surgir 1s ease-out forwards, pulsarBrilho 4s infinite ease-in-out;
+    }
+
+    .home{
+        background-color: aqua;
+        color: black;
+        padding: 12px;
+        width: 20px;
+        border-radius: 30px;
+        box-shadow: 0 0 15px aqua;
+        text-decoration: none;
+        
+    } 
+    
+    
+     @keyframes surgir {
+    from {
+        opacity: 0;
+        transform: translateY(50px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);    
+    }
+}
+
+
+@keyframes pulsarBrilho {
+    0% {
+        box-shadow: 10px 20px 20px aquamarine;
+    }
+    50% {
+        box-shadow: 10px 20px 40px aqua; /* Brilha mais */
+    }
+    100% {
+        box-shadow: 10px 20px 20px aquamarine;
+    }
+}
+</style>
+<html lang="pt-BR">
+    <body>
+        <div class="painel">
+            <a href="index.html"class="home">home</a>
+            <h1>jogos em python</h1>
+            <h1>listas de jogos</h1>
+            <h1>obby 3d em python</h1>
+            <a href="https://www.mediafire.com/file/8t7egy2yv1ncu5d/obby_game.zip/file"class="obby">abaixar</a>
+        </div>
+    </body>
+</html>
+<div class="logo">
+    <h1>rafagames</h1>
+</div>

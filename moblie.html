@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<title>rafagames moblie</title>
+<html lang="pt-BR">
+    <style>
+        body{
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .painel{
+            background-color: black;
+            color: aqua;
+            padding: 90px;
+            width: 600px;
+            border-radius: 30px;
+            text-shadow: 0 0 15px aqua;
+            box-shadow: 10px 20px 30px  aqua;
+            animation: surgir 1s ease-out forwards, pulsarBrilho 4s infinite ease-in-out;
+
+        }
+        .botao{
+            background-color: aqua;
+            color: black;
+            padding: 12px;
+            width: 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 0 15px aqua;
+            
+        }
+
+        .logo{
+            background-color: black;
+            color: aqua;
+            padding: 30px;
+            width: 300px;
+            border-radius: 30px;
+            text-shadow: 0 0 15px;
+            box-shadow: 10px 20px 30px aqua;
+            margin-left: 400px;
+        }
+
+        .home{
+            background-color: aqua;
+            color: black;
+            padding: 12px;
+            width: 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 0 15px aqua;
+        }
+
+        .ku{
+            background-color: aqua;
+            color: black;
+            padding: 12px;
+            width: 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 0 15px aqua;
+        }
+
+        @keyframes surgir {
+    from {
+        opacity: 0;
+        transform: translateY(50px); 
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);    
+    }
+}
+
+
+@keyframes pulsarBrilho {
+    0% {
+        box-shadow: 10px 20px 20px aquamarine;
+    }
+    50% {
+        box-shadow: 10px 20px 40px aqua; /* Brilha mais */
+    }
+    100% {
+        box-shadow: 10px 20px 20px aquamarine;
+    }
+}
+
+    </style>
+    <body>
+        <div class="painel">
+        <a href="index.html"class="home">home</a>
+        <h1>jogos moblie na rafagames</h1>
+        <h1>listas de jogos</h1>
+        <h1>obby 3d</h1>
+        <a href="obby_mobile.html"class="botao">jogar</a>
+        <h1>jogo da cobra mobile</h1>
+        <a href="cobra-mobile.html"class="ku">jogar</a>
+
+        </div>
+        
+
+    </body>
+</html>
+<div class="logo">
+    <h1>rafagames</h1>
+</div>

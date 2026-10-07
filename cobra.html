@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Cobrinha HTML5</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+        #score-board {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        canvas {
+            background-color: #111;
+            border: 4px solid #444;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+        .instructions {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Jogo da Cobrinha</h1>
+    <div id="score-board">Pontuação: <span id="score">0</span></div>
+    
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+    
+    <div class="instructions">Use as setas do teclado (← ↑ ↓ →) para mover.</div>
+
+    <script>
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const scoreElement = document.getElementById("score");
+
+        // Configurações do grid
+        const gridSize = 20;
+        const tileCount = canvas.width / gridSize;
+
+        // Estado do jogo
+        let snake = [{ x: 10, y: 10 }];
+        let food = { x: 5, y: 5 };
+        let dx = 1; // Movimento inicial no eixo X
+        let dy = 0; // Movimento inicial no eixo Y
+        let score = 0;
+        let gameInterval;
+        const gameSpeed = 100; // Milissegundos por atualização
+
+        function main() {
+            if (hasGameEnded()) {
+                alert(`Fim de Jogo! Sua pontuação final foi: ${score}`);
+                resetGame();
+                return;
+            }
+
+            clearCanvas();
+            drawFood();
+            moveSnake();
+            drawSnake();
+        }
+
+        // Inicia o loop do jogo
+        resetGame();
+
+        function clearCanvas() {
+            ctx.fillStyle = "#111";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function drawSnake() {
+            ctx.fillStyle = "#4CAF50"; // Cor do corpo
+            snake.forEach((part, index) => {
+                // Cabeça com tom de verde diferente
+                if (index === 0) ctx.fillStyle = "#388E3C";
+                else ctx.fillStyle = "#4CAF50";
+                
+                ctx.fillRect(part.x * gridSize, part.y * gridSize, gridSize - 2, gridSize - 2);
+            });
+        }
+
+        function moveSnake() {
+            // Cria a nova cabeça baseada na direção atual
+            const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+            snake.unshift(head);
+
+            // Verifica se comeu a comida
+            const hasEatenFood = snake[0].x === food.x && snake[0].y === food.y;
+            if (hasEatenFood) {
+                score += 10;
+                scoreElement.innerText = score;
+                generateFood();
+            } else {
+                // Remove a cauda se não comeu comida
+                snake.pop();
+            }
+        }
+
+        function drawFood() {
+            ctx.fillStyle = "#FF5252";
+            ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 2, gridSize - 2);
+        }
+
+        function generateFood() {
+            food.x = Math.floor(Math.random() * tileCount);
+            food.y = Math.floor(Math.random() * tileCount);
+
+            // Garante que a comida não surja em cima da cobrinha
+            snake.forEach(part => {
+                if (part.x === food.x && part.y === food.y) {
+                    generateFood();
+                }
+            });
+        }
+
+        function hasGameEnded() {
+            // Colisão com as paredes
+            const hitLeftWall = snake[0].x < 0;
+            const hitRightWall = snake[0].x >= tileCount;
+            const hitToptWall = snake[0].y < 0;
+            const hitBottomWall = snake[0].y >= tileCount;
+
+            if (hitLeftWall || hitRightWall || hitToptWall || hitBottomWall) return true;
+
+            // Colisão com o próprio corpo
+            for (let i = 4; i < snake.length; i++) {
+                if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true;
+            }
+            return false;
+        }
+
+        function resetGame() {
+            snake = [{ x: 10, y: 10 }];
+            dx = 1;
+            dy = 0;
+            score = 0;
+            scoreElement.innerText = score;
+            generateFood();
+            clearInterval(gameInterval);
+            gameInterval = setInterval(main, gameSpeed);
+        }
+
+        // Captura das teclas de direção
+        document.addEventListener("keydown", changeDirection);
+
+        function changeDirection(event) {
+            const keyPressed = event.keyCode;
+            
+            const LEFT = 37;
+            const UP = 38;
+            const RIGHT = 39;
+            const DOWN = 40;
+
+            const goingUp = dy === -1;
+            const goingDown = dy === 1;
+            const goingRight = dx === 1;
+            const goingLeft = dx === -1;
+
+            // Altera a direção impedindo que a cobra volte diretamente sobre si mesma
+            if (keyPressed === LEFT && !goingRight) { dx = -1; dy = 0; }
+            if (keyPressed === UP && !goingDown) { dx = 0; dy = -1; }
+            if (keyPressed === RIGHT && !goingLeft) { dx = 1; dy = 0; }
+            if (keyPressed === DOWN && !goingUp) { dx = 0; dy = 1; }
+        }
+    </script>
+</body>
+</html>
